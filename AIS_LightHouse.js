@@ -21,15 +21,27 @@ decoder = new AisDecoder();
 decoder.on('error', err => console.error(err));
 decoder.on('data', decodedMessage => msg = decodedMessage);
 
-nmea = '!AIVDM,1,1,,B,133i;RPP1DPEbcDMV@1r:Ow:2>`<,0*41';
+
 decoder.write(nmea);
-console.log(msg)
+
 socket.on('message', (content, rinfo) => {
     console.log(`Server got: ${content} from ${rinfo.address}:${rinfo.port}`);
-    // var nmea = content.toString();
+    var nmea = content.toString();
+    var array = nmea.split(',');
+    if (array[1] == 2) {
+        if (array[2] == 1) {
+            msgBuffer == nmea;
+        } else {
+            decoder.write(msgBuffer);
+            decoder.write(nmea);
+            console.log(msg)
+        }
+    } else {
+        decoder.write(nmea);
+        console.log(msg)
+    }
 
-    decoder.write(nmea);
-    io.sockets.emit('udp message', content.toString());
+    io.sockets.emit('udp message', msg);
 
 
 });
@@ -43,9 +55,7 @@ app.get('/historico', (request, response) => {
 });
 
 
-
-
 socket.bind(50001);
 server.listen(10000, () => {
-    console.log("Servidor abierto en puerto 15002");
+    console.log("Servidor abierto en puerto 10000");
 });
