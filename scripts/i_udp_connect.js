@@ -1,12 +1,17 @@
 mmsi = [];
 isNew = true;
 socket.on('udp message', function(message) {
-    var msg = message;
+    console.log(message)
+
+    var msg = JSON.parse(message);
+
+    console.log(msg)
     var tempMmsi;
-    var type = msg["type"];
+    var type = msg.type;
     var shipLat
     var shipLng
     newMmsi = msg["mmsi"];
+    console.log(type);
     for (i in mmsi) {
         if (newMmsi == mmsi[i]) {
             isNew = false;
@@ -20,9 +25,10 @@ socket.on('udp message', function(message) {
     if ((type == 1) || (type == 2) || (type == 3)) {
         shipLat = msg["lat"];
         shipLng = msg["lon"];
+
         data = "holi";
-        moveShip(shipLat, shipLng, tempMmsi, isNew)
+        moveShip(shipLat, shipLng, tempMmsi, isNew, data)
     }
 
-    console.log(message);
+
 });

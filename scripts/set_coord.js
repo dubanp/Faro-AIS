@@ -7,7 +7,7 @@ destinations = [];
 destinations2 = [];
 
 function setCoordinates() {
-    var image = "https://icon-icons.com/icons2/519/PNG/48/boat_icon-icons.com_51225.png";
+    var image = "https://img.icons8.com/color/48/000000/interstate-truck.png";
     var start = {
         lat: 10.959409,
         lng: -74.804982

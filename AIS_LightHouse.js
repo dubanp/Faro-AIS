@@ -22,7 +22,7 @@ decoder.on('error', err => console.error(err));
 decoder.on('data', decodedMessage => msg = decodedMessage);
 
 
-decoder.write(nmea);
+
 
 socket.on('message', (content, rinfo) => {
     console.log(`Server got: ${content} from ${rinfo.address}:${rinfo.port}`);
