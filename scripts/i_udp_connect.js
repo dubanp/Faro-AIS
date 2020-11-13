@@ -21,7 +21,6 @@ socket.on('udp message', function(message) {
     }
     if (isNew == true) {
         mmsi.push(newMmsi);
-        isNew = false;
     }
 
     if ((type == 1) || (type == 2) || (type == 3)) {
@@ -31,6 +30,6 @@ socket.on('udp message', function(message) {
         data = "holi";
         moveShip(shipLat, shipLng, tempMmsi, isNew, data)
     }
-
+    isNew = false;
 
 });
