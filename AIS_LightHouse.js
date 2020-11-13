@@ -27,20 +27,8 @@ decoder.on('data', decodedMessage => msg = decodedMessage);
 socket.on('message', (content, rinfo) => {
     console.log(`Server got: ${content} from ${rinfo.address}:${rinfo.port}`);
     var nmea = content.toString();
-    var array = nmea.split(',');
-    if (array[1] == 2) {
-        if (array[2] == 1) {
-            msgBuffer == nmea;
-        } else {
-            decoder.write(msgBuffer);
-            decoder.write(nmea);
-            console.log(msg)
-        }
-    } else {
-        decoder.write(nmea);
-        console.log(msg)
-    }
-
+    console.log(nmea)
+    decoder.write(content);
     io.sockets.emit('udp message', msg);
 
 
