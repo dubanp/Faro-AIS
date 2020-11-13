@@ -25,11 +25,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 socket.on('message', (content, rinfo) => {
-    console.log(`Server got: ${content} from ${rinfo.address}:${rinfo.port}`);
     var nmea = content.toString();
-    nmea = nmea.substring(0, nmea.length);
-    console.log(nmea)
-    decoder.write(content);
+    arr = content.toString.split(',');
+    if (arr[2] == 1) {
+        nmea = nmea.substring(0, nmea.length - 2);
+    }
+    console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
+    decoder.write(nmea);
     io.sockets.emit('udp message', msg);
 
 

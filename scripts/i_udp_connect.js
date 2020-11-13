@@ -16,10 +16,12 @@ socket.on('udp message', function(message) {
         if (newMmsi == mmsi[i]) {
             isNew = false;
             tempMmsi = i;
+            console.log(i);
         }
     }
     if (isNew == true) {
         mmsi.push(newMmsi);
+        isNew = false;
     }
 
     if ((type == 1) || (type == 2) || (type == 3)) {
