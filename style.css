@@ -1,0 +1,46 @@
+#map {
+	height: 500px;
+	width: 100%;
+}
+
+.data{
+	margin-top: 50px;
+}
+
+.info{
+	margin-bottom: 35px;
+}
+
+#inicio {
+	margin-top: 30px;
+}
+
+#fin {
+	margin-top: 30px;
+}
+
+#lat {
+	margin-top: 30px;
+}
+
+#form {
+	margin-top: 30px;
+}
+
+.container{
+	max-width: 1800px;
+	max-height: 2500px;
+}
+
+/* .row {
+	height: 1000px;
+} */
+
+#enfoque {
+	margin-top: 35px;
+	margin-bottom: 20px;
+}
+
+#boton {
+	margin-bottom: 20px;
+}

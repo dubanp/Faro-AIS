@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" , shrink-to-fit="no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="jquery/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src='/socket.io/socket.io.js'></script>
+    <script src='scripts/socket.js'></script>
+    <title>GPSLocation</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GPSLocation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link active" href="/historico">Histórico <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Acerca</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row data">
+            <div class="col-lg-3 info">
+                <h1>Histórico del camión</h1>
+                <form id="form">
+                    <div class="form-group">
+                        <label for="datetimeinit">Fecha inicio</label>
+                        <input type="text" class="form-control" name="datetimeinit" id="datetimeinit" aria-describedby="initHelp" placeholder="0000-00-00 00:00" autocomplete="off">
+                        <small id="initHelp" class="form-text text-muted">Ingrese la fecha inicial de busqueda.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="datetimefin">Fecha fin</label>
+                        <input type="text" class="form-control" name="datetimefin" id="datetimefin" aria-describedby="finHelp" placeholder="0000-00-00 00:00" autocomplete="off">
+                        <small id="finHelp" class="form-text text-muted">Ingrese la fecha final de busqueda.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="boton">Buscar</button>
+                    
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-success">
+                          <input type="radio" id="option1" autocomplete="off" onclick="setmap1()" checked> Ambos
+                        </label>
+                        <label class="btn btn-outline-info">
+                          <input type="radio" id="option2" autocomplete="off" onclick="setmap2()"> Camión #1
+                        </label>
+                        <label class="btn btn-outline-danger">
+                          <input type="radio" id="option3" autocomplete="off" onclick="setmap3()"> Camión #2
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/h_setcoord.js"></script>
+    <script src="scripts/findByPlace.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9t2ZsrarU4KQl7fZl6Yr2vkS3dckb_KY&callback=setCoordinates">
+    </script>
+
+    <script src="scripts/h_runs2r.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery.datetimepicker.full.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="scripts/datetimepicker.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#datetimeinit").change(function() {
+                var x = document.getElementById('datetimeinit').value;
+                var y = document.getElementById('datetimefin').value;
+                if (y != "") {
+                    //pass
+                } else {
+                    document.getElementById('datetimefin').value = `${x}`;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

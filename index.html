@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src='/socket.io/socket.io.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <script src='scripts/socket.js'></script>
+    <script src="scripts/i_udp_connect.js"></script>
+
+    <title>GPSLocation</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GPSLocation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/historico">Histórico</a>
+                <a class="nav-link" href="#">Acerca</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row data">
+            <div class="col-lg-3 info">
+                <h2>Coordenadas del camión</h2>
+                <h4 id="lat">Latitud:</h4>
+                <p id="coordinates1">x</p>
+                <h4>Longitud:</h4>
+                <p id="coordinates2">x</p>
+                <h4>Fecha:</h4>
+                <p id="coordinates3">x</p>
+                <h4>Giroscopio:</h4>
+                <p id="coordinates4">x</p>
+                <h5 id="enfoque">Elija el punto de enfoque:</h5>
+                <!-- <input type="button" class="btn btn-success" value="Libre" onclick="setmap1()">
+                <input type="button" class="btn btn-info" value="Camión 1" onclick="setmap2()">
+                <input type="button" class="btn btn-danger" value="Camión 2" onclick="setmap3()"> -->
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-success">
+                      <input type="radio" id="option1" autocomplete="off" onclick="setmap1()" checked> Ambos
+                    </label>
+                    <label class="btn btn-outline-info">
+                      <input type="radio" id="option2" autocomplete="off" onclick="setmap2()"> Camión #1
+                    </label>
+                    <label class="btn btn-outline-danger">
+                      <input type="radio" id="option3" autocomplete="off" onclick="setmap3()"> Camión #2
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">GPSLocation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <p>¡Bienvenido, en esta página podrás consultar la posición en tiempo real de un camión!</br>
+                        La pestaña históricos permite consultar la ubicación del camión en un intervalo de tiempo definido por ti.</br>
+                        Para más información consulte la pestaña "Acerca".</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/set_coord.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9t2ZsrarU4KQl7fZl6Yr2vkS3dckb_KY&callback=setCoordinates">
+    </script>
+
+    <script src="scripts/i_s2r.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="jquery/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+        /*$(document).ready(function() {
+            $("#exampleModal").modal('show');
+        });*/
+    </script>
+
+</body>
+
+</html>
