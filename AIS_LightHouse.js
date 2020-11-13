@@ -26,9 +26,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 socket.on('message', (content, rinfo) => {
     var nmea = content.toString();
-    arr = content.toString.split(',');
+    arr = nmea.split(',');
     if (arr[2] == 1) {
         nmea = nmea.substring(0, nmea.length - 2);
+    } else {
+        msgBuffer = nmea.split('\n')
+        nmea = msgBuffer[1];
+        decoder.write(msgBuffer[0]);
     }
     console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
     decoder.write(nmea);
