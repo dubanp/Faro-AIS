@@ -30,9 +30,9 @@ socket.on('message', (content, rinfo) => {
     if (arr[2] == 1) {
         nmea = nmea.substring(0, nmea.length - 2);
     } else {
-        msgBuffer = nmea.split('\n')
-        nmea = msgBuffer[1];
-        decoder.write(msgBuffer[0]);
+        msgBuffer = nmea.split('!')
+        nmea = '!' + msgBuffer[1].substring(0, msgBuffer[1].length - 2);
+        decoder.write('!' + msgBuffer[0].substring(0, msgBuffer[0].length - 2));
     }
     console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
     decoder.write(nmea);
