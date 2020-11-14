@@ -21,7 +21,7 @@ function moveShip(shipLat, shipLng, mmsi, isNew, data) {
         lng: shipLng
     }
 
-
+    console.log("is new: " + isNew + " which one: " + mmsi)
     if (isNew == true) {
         var marker = new google.maps.Marker({
             map: map,

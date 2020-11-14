@@ -27,10 +27,11 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 socket.on('message', (content, rinfo) => {
     var nmea = content.toString();
     arr = nmea.split(',');
-    if (arr[2] == 1) {
+    if (arr[1] == 1) {
         nmea = nmea.substring(0, nmea.length - 2);
     } else {
         msgBuffer = nmea.split('!')
+        console.log(nmea.length)
         nmea = '!' + msgBuffer[1].substring(0, msgBuffer[1].length - 2);
         decoder.write('!' + msgBuffer[0].substring(0, msgBuffer[0].length - 2));
     }
