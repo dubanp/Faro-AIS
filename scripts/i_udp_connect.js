@@ -11,11 +11,10 @@ socket.on('udp message', function(message) {
     console.log(type);
     console.log(mmsi);
 
-    for (i in mmsi) {
+    for (i = 0; i < mmsi.lenght; i++) {
         if (newMmsi == mmsi[i]) {
             isNew = false;
             tempMmsi = i;
-            console.log(i);
         }
     }
     console.log(isNew);
