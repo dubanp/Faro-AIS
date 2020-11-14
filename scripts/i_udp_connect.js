@@ -1,10 +1,7 @@
 mmsi = [];
 isNew = true;
 socket.on('udp message', function(message) {
-    console.log(message)
-
     var msg = JSON.parse(message);
-
     console.log(msg)
     var tempMmsi;
     var type = msg.type;
@@ -12,6 +9,8 @@ socket.on('udp message', function(message) {
     var shipLng
     newMmsi = msg["mmsi"];
     console.log(type);
+    console.log(mmsi);
+
     for (i in mmsi) {
         if (newMmsi == mmsi[i]) {
             isNew = false;
@@ -19,6 +18,7 @@ socket.on('udp message', function(message) {
             console.log(i);
         }
     }
+    console.log(isNew);
     if (isNew == true) {
         mmsi.push(newMmsi);
     }

@@ -28,7 +28,7 @@ function moveShip(shipLat, shipLng, mmsi, isNew, data) {
             icon: image
         });
         marker.setPosition(newPos);
-        markers.push(marker);
+
         marker.addListener("mouseover", () => {
             infoWindow.setContent(data)
             infoWindow.open(map, marker);
@@ -36,6 +36,7 @@ function moveShip(shipLat, shipLng, mmsi, isNew, data) {
         marker.addListener("mouseout", () => {
             infoWindow.close();
         });
+        markers.push(marker);
     } else {
         markers[mmsi].setPosition(newPos);
     }
