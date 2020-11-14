@@ -12,7 +12,9 @@ socket.on('udp message', function(message) {
     console.log(mmsi);
 
     for (i = 0; i < mmsi.lenght; i++) {
+        console.log(newMmsi + " = " + mmsi[i] + " en " + i)
         if (newMmsi == mmsi[i]) {
+            console.log(newMmsi + " = " + mmsi[i] + " en " + i)
             isNew = false;
             tempMmsi = i;
         }
@@ -28,7 +30,8 @@ socket.on('udp message', function(message) {
 
         data = "holi";
         moveShip(shipLat, shipLng, tempMmsi, isNew, data)
+        isNew = false;
     }
-    isNew = false;
+
 
 });
