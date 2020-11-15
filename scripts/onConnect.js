@@ -10,7 +10,7 @@ socket.on('mmsi', function(message) {
 })
 socket.on('data', function(message) {
     data = message;
-    console.log(mmsi);
+    console.log(data);
 })
 socket.on('locations', function(message) {
     locations = message;
