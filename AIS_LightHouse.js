@@ -22,7 +22,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 mmsi = [];
 locations = [];
 isNew = true;
-data = [];
+data = {};
 
 
 socket.on('message', (content, rinfo) => {

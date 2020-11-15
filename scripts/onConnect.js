@@ -1,7 +1,7 @@
 mmsi = [];
 isNew = true;
 locations = [];
-data = [];
+data = {};
 socket.emit('on connection', "ACK");
 
 socket.on('mmsi', function(message) {
