@@ -11,6 +11,7 @@ socket.on('mmsi', function(message) {
 socket.on('locations', function(message) {
     locations = message;
     console.log(locations);
+    startShips();
 })
 
 function startShips() {
