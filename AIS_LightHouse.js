@@ -22,7 +22,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 mmsi = [];
 locations = [];
 isNew = true;
-data = {};
+data = [];
 
 
 socket.on('message', (content, rinfo) => {
@@ -57,7 +57,7 @@ socket.on('message', (content, rinfo) => {
 
     if (isNew == true) {
         mmsi.push(newMmsi);
-        var newData = [];
+        var newData = {};
         //mensaje tipo 1
         newData['navStatus '] = null;
         newData['rateOfTurn '] = null;

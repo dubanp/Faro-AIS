@@ -17,7 +17,7 @@ socket.on('udp message', function(message) {
     console.log(isNew);
     if (isNew == true) {
         mmsi.push(newMmsi);
-        var newData = [];
+        var newData = {};
         //mensaje tipo 1
         newData['navStatus '] = null;
         newData['rateOfTurn '] = null;
