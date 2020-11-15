@@ -11,7 +11,7 @@ function startMap() {
         mapTypeId: 'hybrid'
     });
     infoWindow = new google.maps.InfoWindow();
-    socket.emit('on connection', "ACK")
+
 }
 
 function moveShip(shipLat, shipLng, mmsi, isNew, data) {

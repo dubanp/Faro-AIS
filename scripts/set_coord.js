@@ -185,7 +185,7 @@ function setCoordinates() {
 
 function setmap1() {
     setop = 1;
-    setCoordinates();
+
     document.getElementById("coordinates1").innerHTML = "---";
     document.getElementById("coordinates2").innerHTML = "---";
     document.getElementById("coordinates3").innerHTML = "---";

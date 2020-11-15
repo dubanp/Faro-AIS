@@ -75,11 +75,13 @@ socket.on('message', (content, rinfo) => {
 
 
 });
-socket.on('on connection', (content, rinfo) => {
-    socket.emit('mmsi', mmsi)
-    socket.emit('locations', locations)
+io.on('connection', socket => {
+    socket.on('on connection', (content, rinfo) => {
+        socket.emit('mmsi', mmsi)
+        socket.emit('locations', locations)
 
 
+    });
 });
 
 app.get('/', (request, response) => {
