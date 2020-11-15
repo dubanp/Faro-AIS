@@ -29,9 +29,10 @@ socket.on('message', (content, rinfo) => {
     var nmea = content.toString();
 
     msgBuffer = nmea.split('!')
+    console.log(msgBuffer);
     for (i = 0; i < msgBuffer.length; i++) {
-        console.log(msgBuffer);
-        nmea = '!' + msgBuffer[2].substring(0, msgBuffer[i].length - 2);
+        temp = msgBuffer[i]
+        nmea = '!' + msgBuffer[i].substring(0, msgBuffer[i].length - 2);
         console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
         decoder.write(nmea);
     }
