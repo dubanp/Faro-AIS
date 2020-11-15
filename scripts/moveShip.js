@@ -1,4 +1,3 @@
-markers = [];
 var start = {
     lat: 10.9726006,
     lng: -74.7607749
@@ -11,7 +10,17 @@ function startMap() {
         mapTypeId: 'hybrid'
     });
     infoWindow = new google.maps.InfoWindow();
+    var image = "https://img.icons8.com/cotton/64/000000/lighthouse--v5.png";
+    var marker = new google.maps.Marker({
+        map: map,
+        icon: image
+    });
 
+    var faro = {
+        lat: 10.9657821,
+        lng: -74.8095643
+    }
+    marker.setPosition()
 }
 
 function moveShip(shipLat, shipLng, mmsi, isNew) {

@@ -2,6 +2,7 @@ mmsi = [];
 isNew = true;
 locations = [];
 data = [];
+markers = [];
 socket.emit('on connection', "ACK");
 
 socket.on('mmsi', function(message) {
@@ -27,7 +28,7 @@ function startShips() {
         });
         marker.setPosition(locations[i]);
         marker.addListener("mouseover", () => {
-            infoWindow.setContent(data[i])
+            infoWindow.setContent(JSON.stringify(data[i]))
             infoWindow.open(map, marker);
         });
         marker.addListener("mouseout", () => {
