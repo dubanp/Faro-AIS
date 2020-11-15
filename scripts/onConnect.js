@@ -6,10 +6,11 @@ socket.emit('on connection', "ACK");
 
 socket.on('mmsi', function(message) {
     mmsi = message;
+    console.log(mmsi);
 })
 socket.on('locations', function(message) {
     locations = message;
-
+    console.log(locations);
 })
 
 function startShips() {

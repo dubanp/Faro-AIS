@@ -6,13 +6,10 @@ socket.on('udp message', function(message) {
     var shipLat
     var shipLng
     newMmsi = msg["mmsi"];
-    console.log(type);
-    console.log(mmsi);
+
 
     for (i = 0; i < mmsi.length; i++) {
-        console.log(newMmsi + " = " + mmsi[i] + " en " + i)
         if (newMmsi == mmsi[i]) {
-            console.log(newMmsi + " = " + mmsi[i] + " en " + i)
             isNew = false;
             tempMmsi = i;
         }
