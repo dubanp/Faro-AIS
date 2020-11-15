@@ -1,5 +1,3 @@
-mmsi = [];
-isNew = true;
 socket.on('udp message', function(message) {
     var msg = JSON.parse(message);
     console.log(msg)
@@ -11,7 +9,7 @@ socket.on('udp message', function(message) {
     console.log(type);
     console.log(mmsi);
 
-    for (i = 0; i < mmsi.lenght; i++) {
+    for (i = 0; i < mmsi.length; i++) {
         console.log(newMmsi + " = " + mmsi[i] + " en " + i)
         if (newMmsi == mmsi[i]) {
             console.log(newMmsi + " = " + mmsi[i] + " en " + i)
@@ -30,7 +28,7 @@ socket.on('udp message', function(message) {
 
         data = "holi";
         moveShip(shipLat, shipLng, tempMmsi, isNew, data)
-        isNew = false;
+        isNew = true;
     }
 
 

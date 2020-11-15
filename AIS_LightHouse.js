@@ -19,8 +19,9 @@ require('dotenv').config();
 //Render CSS
 app.use(express.static(__dirname));
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-
+mmsi = [];
+locations = [];
+isNew = true;
 
 
 
@@ -33,12 +34,52 @@ socket.on('message', (content, rinfo) => {
         msgBuffer = nmea.split('!')
         console.log(nmea.length)
         console.log(msgBuffer);
-        nmea = '!' + msgBuffer[2].substring(0, msgBuffer[2].length - 4);
-        decoder.write('!' + msgBuffer[1].substring(0, msgBuffer[1].length - 4));
+        nmea = '!' + msgBuffer[2].substring(0, msgBuffer[2].length - 2);
+        decoder.write('!' + msgBuffer[1].substring(0, msgBuffer[1].length - 2));
     }
     console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
     decoder.write(nmea);
     io.sockets.emit('udp message', msg);
+
+    var msg1 = JSON.parse(msg);
+    var tempMmsi;
+    var type = msg1.type;
+    var shipLat
+    var shipLng
+    var newMmsi = msg1["mmsi"];
+
+
+    for (i = 0; i < mmsi.length; i++) {
+        console.log(newMmsi + " = " + mmsi[i] + " en " + i)
+        if (newMmsi == mmsi[i]) {
+            console.log(newMmsi + " = " + mmsi[i] + " en " + i)
+            isNew = false;
+            tempMmsi = i;
+        }
+    }
+
+    if (isNew == true) {
+        mmsi.push(newMmsi);
+    }
+
+    if ((type == 1) || (type == 2) || (type == 3)) {
+        shipLat = msg1["lat"];
+        shipLng = msg1["lon"];
+        var newPos = {
+            lat: shipLat,
+            lng: shipLng
+        }
+        locations.push(newPos);
+
+        data = "holi";
+        isNew = true;
+    }
+
+
+});
+socket.on('on connection', (content, rinfo) => {
+    socket.emit('mmsi', mmsi)
+    socket.emit('locations', locations)
 
 
 });
