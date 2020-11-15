@@ -1,16 +1,17 @@
 markers = [];
 var start = {
-    lat: 10.959409,
-    lng: -74.804982
+    lat: 10.9726006,
+    lng: -74.7607749
 };
 
 function startMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
+        zoom: 10,
         center: start,
         mapTypeId: 'hybrid'
     });
     infoWindow = new google.maps.InfoWindow();
+    socket.emit('on connection', "ACK")
 }
 
 function moveShip(shipLat, shipLng, mmsi, isNew, data) {

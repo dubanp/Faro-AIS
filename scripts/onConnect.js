@@ -2,7 +2,6 @@ mmsi = [];
 isNew = true;
 locations = [];
 data = "hola";
-socket.emit('on connection', )
 socket.on('mmsi', function(message) {
     mmsi = message;
 })

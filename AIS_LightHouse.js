@@ -50,9 +50,7 @@ socket.on('message', (content, rinfo) => {
 
 
     for (i = 0; i < mmsi.length; i++) {
-        console.log(newMmsi + " = " + mmsi[i] + " en " + i)
         if (newMmsi == mmsi[i]) {
-            console.log(newMmsi + " = " + mmsi[i] + " en " + i)
             isNew = false;
             tempMmsi = i;
         }
