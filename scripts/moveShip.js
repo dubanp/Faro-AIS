@@ -20,7 +20,7 @@ function startMap() {
         lat: 10.9657821,
         lng: -74.8095643
     }
-    marker.setPosition()
+    marker.setPosition(faro);
 }
 
 function moveShip(shipLat, shipLng, mmsi, isNew) {
