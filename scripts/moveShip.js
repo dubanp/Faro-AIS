@@ -14,7 +14,7 @@ function startMap() {
 
 }
 
-function moveShip(shipLat, shipLng, mmsi, isNew, data) {
+function moveShip(shipLat, shipLng, mmsi, isNew) {
     var image = "https://img.icons8.com/cotton/64/000000/cargo-ship--v2.png";
 
     var newPos = {

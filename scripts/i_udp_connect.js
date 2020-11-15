@@ -76,7 +76,7 @@ socket.on('udp message', function(message) {
         data[tempMmsi].channel = null;
         data[tempMmsi].repeat = null;
         data[tempMmsi].mmsi = msg.mmsi;
-        moveShip(shipLat, shipLng, tempMmsi, isNew, data)
+        moveShip(shipLat, shipLng, tempMmsi, isNew)
         isNew = true;
 
     }
