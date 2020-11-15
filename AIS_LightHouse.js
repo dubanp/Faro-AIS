@@ -94,6 +94,7 @@ socket.on('message', (content, rinfo) => {
         newData.destination = null;
         newData.dte = null;
         data.push(newData);
+        tempMmsi = mmsi.length - 1;
     }
 
     if ((type == 1) || (type == 2) || (type == 3)) {
