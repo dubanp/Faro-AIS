@@ -22,23 +22,21 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 mmsi = [];
 locations = [];
 isNew = true;
-
+data = [];
 
 
 socket.on('message', (content, rinfo) => {
     var nmea = content.toString();
-    arr = nmea.split(',');
-    if (arr[1] == 1) {
-        nmea = nmea.substring(0, nmea.length - 2);
-    } else {
-        msgBuffer = nmea.split('!')
-        console.log(nmea.length)
+
+    msgBuffer = nmea.split('!')
+    for (i = 0; i < msgBuffer.length; i++) {
         console.log(msgBuffer);
-        nmea = '!' + msgBuffer[2].substring(0, msgBuffer[2].length - 2);
-        decoder.write('!' + msgBuffer[1].substring(0, msgBuffer[1].length - 2));
+        nmea = '!' + msgBuffer[2].substring(0, msgBuffer[i].length - 2);
+        console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
+        decoder.write(nmea);
     }
-    console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
-    decoder.write(nmea);
+
+
     io.sockets.emit('udp message', msg);
 
     var msg1 = JSON.parse(msg);
@@ -58,18 +56,95 @@ socket.on('message', (content, rinfo) => {
 
     if (isNew == true) {
         mmsi.push(newMmsi);
+        var newData = [];
+        //mensaje tipo 1
+        newData.navStatus = null;
+        newData.rateOfTurn = null;
+        newData.speedOverGround = null;
+        newData.accuracy = null;
+        newData.lon = null;
+        newData.lat = null;
+        newData.courseOverGround = null;
+        newData.heading = null;
+        newData.utcSecond = null;
+        newData.specialManoeuvre = null;
+        newData.raim = null;
+        newData.radio = null;
+        newData.type = null;
+        newData.channel = null;
+        newData.repeat = null;
+        newData.mmsi = null;
+        //Mensaje tipo 5
+        newData.aisVersion = null;
+        newData.imo = null;
+        newData.callsign = null;
+        newData.name = null;
+        newData.typeAndCargo = null;
+        newData.dimBow = null;
+        newData.dimStern = null;
+        newData.dimPort = null;
+        newData.dimStarboard = null;
+        newData.epfd = null;
+        newData.etaMonth = null;
+        newData.etaDay = null;
+        newData.etaHour = null;
+        newData.etaMinute = null;
+        newData.draught = null;
+        newData.destination = null;
+        newData.dte = null;
+        data.push(newData);
     }
 
     if ((type == 1) || (type == 2) || (type == 3)) {
         shipLat = msg1["lat"];
         shipLng = msg1["lon"];
+
         var newPos = {
             lat: shipLat,
             lng: shipLng
         }
+        data[tempMmsi].navStatus = msg1.navStatus;
+        data[tempMmsi].rateOfTurn = msg1.rateOfTurn;
+        data[tempMmsi].speedOverGround = msg1.speedOverGround;
+        data[tempMmsi].accuracy = msg1.accuracy;
+        data[tempMmsi].lon = msg1.lon;
+        data[tempMmsi].lat = msg1.lat;
+        data[tempMmsi].courseOverGround = msg1.courseOverGround;
+        data[tempMmsi].heading = msg1.heading;
+        data[tempMmsi].utcSecond = msg1.utcSecond;
+        data[tempMmsi].specialManoeuvre = msg1.specialManoeuvre;
+        data[tempMmsi].raim = msg1.raim;
+        data[tempMmsi].radio = msg1.radio;
+        data[tempMmsi].type = msg1.type;
+        data[tempMmsi].channel = null;
+        data[tempMmsi].repeat = null;
+        data[tempMmsi].mmsi = msg1.mmsi;
+
         locations.push(newPos);
 
-        data = "holi";
+
+        isNew = true;
+    }
+    if (type == 5) {
+
+        data[tempMmsi].aisVersion = msg1.aisVersion;
+        data[tempMmsi].imo = msg1.imo;
+        data[tempMmsi].callsign = msg1.callsign;
+        data[tempMmsi].name = msg1.name;;
+        data[tempMmsi].typeAndCargo = msg1.typeAndCargo;
+        data[tempMmsi].dimBow = msg1.dimBow;
+        data[tempMmsi].dimStern = msg1.dimStern;
+        data[tempMmsi].dimPort = msg1.dimPort;
+        data[tempMmsi].dimStarboard = msg1.dimStarboard;
+        data[tempMmsi].epfd = msg1.epfd;
+        data[tempMmsi].etaMonth = msg1.etaMonth;
+        data[tempMmsi].etaDay = msg1.etaDay;
+        data[tempMmsi].etaHour = msg1.etaHour;
+        data[tempMmsi].etaMinute = msg1.etaMinute;
+        data[tempMmsi].draught = msg1.draught;
+        data[tempMmsi].destination = msg1.destination;
+        data[tempMmsi].dte = msg1.dte;
+
         isNew = true;
     }
 
@@ -78,6 +153,7 @@ socket.on('message', (content, rinfo) => {
 io.on('connection', socket => {
     socket.on('on connection', (content, rinfo) => {
         socket.emit('mmsi', mmsi)
+        socket.emit('data', data)
         socket.emit('locations', locations)
 
 

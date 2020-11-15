@@ -31,7 +31,7 @@ function moveShip(shipLat, shipLng, mmsi, isNew, data) {
         marker.setPosition(newPos);
 
         marker.addListener("mouseover", () => {
-            infoWindow.setContent(data)
+            infoWindow.setContent(JSON.stringify(data[mmsi]))
             infoWindow.open(map, marker);
         });
         marker.addListener("mouseout", () => {
