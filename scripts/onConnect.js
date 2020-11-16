@@ -5,19 +5,22 @@ data = [];
 markers = [];
 socket.emit('on connection', "ACK");
 
-socket.on('mmsi', function(message) {
-    mmsi = message;
-    console.log(mmsi);
-})
-socket.on('data', function(message) {
-    data = message;
-    console.log(data);
-})
-socket.on('locations', function(message) {
-    locations = message;
-    console.log(locations);
+
+// socket.on('startUpData', function(message) {
+//     locations = message['b'];
+//     data = message['c'];
+//     mmsi= message['a'];
+//     console.log(message);
+//     startShips();
+// })
+
+$.get('/startup', function(message) {
+    locations = message['b'];
+    data = message['c'];
+    mmsi = message['a'];
+    console.log(message);
     startShips();
-})
+});
 
 function startShips() {
     var image = "https://img.icons8.com/cotton/64/000000/cargo-ship--v2.png";

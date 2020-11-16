@@ -154,9 +154,13 @@ socket.on('message', (content, rinfo) => {
 });
 io.on('connection', socket => {
     socket.on('on connection', (content, rinfo) => {
-        socket.emit('mmsi', mmsi)
-        socket.emit('data', data)
-        socket.emit('locations', locations)
+        var startUpData = {};
+        startUpData['a'] = mmsi;
+        startUpData['b'] = locations;
+        startUpData['c'] = data;
+
+        socket.emit('startUpData', startUpData)
+
 
 
     });
@@ -165,7 +169,13 @@ io.on('connection', socket => {
 app.get('/', (request, response) => {
     response.sendFile(path.join(__dirname + '/index.html'));
 });
-
+app.get('/startup', (request, response) => {
+    var startUpData = {};
+    startUpData['a'] = mmsi;
+    startUpData['b'] = locations;
+    startUpData['c'] = data;
+    response.send(startUpData);
+});
 app.get('/historico', (request, response) => {
     response.sendFile(path.join(__dirname + '/historico.html'));
 });
