@@ -175,8 +175,9 @@ app.get('/startup', (request, response) => {
     startUpData['a'] = mmsi;
     startUpData['b'] = locations;
     startUpData['c'] = data;
+    var a = JSON.stringify(startUpData)
     try {
-        response.send(startUpData);
+        response.send(a);
     } catch (error) {
         console.log(error)
     }
