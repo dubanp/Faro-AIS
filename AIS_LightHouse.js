@@ -37,7 +37,7 @@ socket.on('message', (content, rinfo) => {
 
         decoder.write(nmea);
 
-        console.log(error)
+
 
     }
 
