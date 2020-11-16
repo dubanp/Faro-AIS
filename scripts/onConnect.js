@@ -32,10 +32,7 @@ function startShips() {
         });
         marker.setPosition(locations[i]);
         marker.addListener("mouseover", () => {
-            $.get('/getdata', parseInt(i), function(message) {
-                data[i] = message;
-                console.log(message);
-            });
+
             infoWindow.setContent(JSON.stringify(data[i]))
             infoWindow.open(map, marker);
         });

@@ -128,7 +128,7 @@ socket.on('message', (content, rinfo) => {
             tempData["mmsi "] = msg1["mmsi"];
             if (isNew == true) {
                 locations.push(newPos);
-            } else { locations[newMmsi] = newPos; }
+            } else { locations[tempMmsi] = newPos; }
             data[tempMmsi] = tempData;
             isNew = true;
         }
@@ -187,6 +187,7 @@ app.get('/startup', (request, response) => {
         response.send(startUpData);
     } catch (error) {
         console.log(error)
+        console.log(startUpData)
     }
 });
 app.get('/historico', (request, response) => {
