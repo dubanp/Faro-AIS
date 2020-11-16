@@ -5,18 +5,15 @@ data = [];
 markers = [];
 
 
-// socket.emit('on connection', "ACK");
-// socket.on('startUpData', function(message) {
-//     locations = message['b'];
-//     data = message['c'];
-//     mmsi= message['a'];
-//     console.log(message);
-//     startShips();
-// })
+socket.on('startUpData', function(message) {
+    data[i] = message;
+    console.log(message);
+    startShips();
+})
 try {
     $.get('/startup', function(message) {
         locations = message['b'];
-        data = message['c'];
+        data = [mmsi.length];
         mmsi = message['a'];
         console.log(message);
         startShips();
@@ -34,6 +31,7 @@ function startShips() {
         });
         marker.setPosition(locations[i]);
         marker.addListener("mouseover", () => {
+            socket.emit('on connection', i);
             infoWindow.setContent(JSON.stringify(data[i]))
             infoWindow.open(map, marker);
         });
