@@ -35,7 +35,6 @@ function startShips() {
             $.get('/getdata', parseInt(i), function(message) {
                 data[i] = message;
                 console.log(message);
-                startShips();
             });
             infoWindow.setContent(JSON.stringify(data[i]))
             infoWindow.open(map, marker);
