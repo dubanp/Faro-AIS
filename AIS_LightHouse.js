@@ -30,7 +30,7 @@ socket.on('message', (content, rinfo) => {
 
     msgBuffer = nmea.split('!')
     console.log(msgBuffer);
-    for (i = 0; i < msgBuffer.length; i++) {
+    for (i = 1; i < msgBuffer.length; i++) {
         temp = msgBuffer[i]
         nmea = '!' + msgBuffer[i].substring(0, msgBuffer[i].length - 2);
         console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
@@ -169,12 +169,17 @@ io.on('connection', socket => {
 app.get('/', (request, response) => {
     response.sendFile(path.join(__dirname + '/index.html'));
 });
+
 app.get('/startup', (request, response) => {
     var startUpData = {};
     startUpData['a'] = mmsi;
     startUpData['b'] = locations;
     startUpData['c'] = data;
-    response.send(startUpData);
+    try {
+        response.send(startUpData);
+    } catch (error) {
+        console.log(error)
+    }
 });
 app.get('/historico', (request, response) => {
     response.sendFile(path.join(__dirname + '/historico.html'));

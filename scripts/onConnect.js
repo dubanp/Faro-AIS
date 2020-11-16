@@ -3,9 +3,9 @@ isNew = true;
 locations = [];
 data = [];
 markers = [];
-socket.emit('on connection', "ACK");
 
 
+// socket.emit('on connection', "ACK");
 // socket.on('startUpData', function(message) {
 //     locations = message['b'];
 //     data = message['c'];
@@ -13,14 +13,17 @@ socket.emit('on connection', "ACK");
 //     console.log(message);
 //     startShips();
 // })
-
-$.get('/startup', function(message) {
-    locations = message['b'];
-    data = message['c'];
-    mmsi = message['a'];
-    console.log(message);
-    startShips();
-});
+try {
+    $.get('/startup', function(message) {
+        locations = message['b'];
+        data = message['c'];
+        mmsi = message['a'];
+        console.log(message);
+        startShips();
+    });
+} catch (error) {
+    console.log(error)
+}
 
 function startShips() {
     var image = "https://img.icons8.com/cotton/64/000000/cargo-ship--v2.png";
