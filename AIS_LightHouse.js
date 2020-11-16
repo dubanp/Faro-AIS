@@ -7,6 +7,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var ais = require('ais-stream-decoder');
 const { default: AisDecoder } = require('ais-stream-decoder');
+const { send } = require('process');
 decoder = new AisDecoder();
 decoder.on('error', err => console.error(err));
 decoder.on('data', decodedMessage => msg = decodedMessage);
@@ -161,7 +162,6 @@ socket.on('message', (content, rinfo) => {
 });
 io.on('connection', socket => {
     socket.on('on connection', (content, rinfo) => {
-        startUpData = data[content];
 
         socket.emit('startUpData', startUpData)
 
@@ -172,6 +172,10 @@ io.on('connection', socket => {
 
 app.get('/', (request, response) => {
     response.sendFile(path.join(__dirname + '/index.html'));
+});
+
+app.get('/getdata', (request, response) => {
+    response.send(data[request.toString])
 });
 
 app.get('/startup', (request, response) => {
