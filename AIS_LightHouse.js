@@ -2,7 +2,6 @@ var fs = require('fs');
 var dgram = require('dgram');
 var socketio = require('socket.io');
 var express = require('express');
-const mysql = require('mysql');
 var path = require('path');
 var bodyParser = require('body-parser');
 var ais = require('ais-stream-decoder');
@@ -15,11 +14,9 @@ var app = express();
 var server = require('http').Server(app);
 var io = socketio.listen(server);
 var socket = dgram.createSocket('udp4');
-require('dotenv').config();
-
-//Render CSS
 app.use(express.static(__dirname));
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 mmsi = [];
 locations = [];
 isNew = true;
@@ -28,23 +25,17 @@ data = [];
 
 socket.on('message', (content, rinfo) => {
     var nmea = content.toString();
-
     msgBuffer = nmea.split('!')
     console.log(msgBuffer);
     for (i = 1; i < msgBuffer.length; i++) {
         temp = msgBuffer[i]
         nmea = '!' + msgBuffer[i].substring(0, msgBuffer[i].length - 2);
         console.log(`Server got: ${nmea} from ${rinfo.address}:${rinfo.port}`);
-
         decoder.write(nmea);
-
-
-
     }
 
     try {
         io.sockets.emit('udp message', msg);
-
         var msg1 = JSON.parse(msg);
         var tempMmsi;
         var type = msg1.type;
@@ -52,14 +43,12 @@ socket.on('message', (content, rinfo) => {
         var shipLng
         var newMmsi = msg1["mmsi"];
 
-
         for (i = 0; i < mmsi.length; i++) {
             if (newMmsi == mmsi[i]) {
                 isNew = false;
                 tempMmsi = i;
             }
         }
-
         if (isNew == true) {
             mmsi.push(newMmsi);
             var newData = {};
@@ -101,7 +90,6 @@ socket.on('message', (content, rinfo) => {
             data.push(newData);
             tempMmsi = mmsi.length - 1;
         }
-
         if ((type == 1) || (type == 2) || (type == 3)) {
             shipLat = msg1["lat"];
             shipLng = msg1["lon"];
@@ -133,7 +121,6 @@ socket.on('message', (content, rinfo) => {
             isNew = true;
         }
         if (type == 5) {
-
             tempData["aisVersion "] = msg1["aisVersion"];
             tempData["imo "] = msg1["imo"];
             tempData["callsign "] = msg1["callsign"];
@@ -157,16 +144,11 @@ socket.on('message', (content, rinfo) => {
     } catch (error) {
         console.log(error)
     }
-
-
 });
+
 io.on('connection', socket => {
     socket.on('on connection', (content, rinfo) => {
-
         socket.emit('startUpData', startUpData)
-
-
-
     });
 });
 
@@ -182,16 +164,12 @@ app.get('/startup', (request, response) => {
     var startUpData = {};
     startUpData['a'] = mmsi;
     startUpData['b'] = locations;
-
     try {
         response.send(startUpData);
     } catch (error) {
         console.log(error)
         console.log(startUpData)
     }
-});
-app.get('/historico', (request, response) => {
-    response.sendFile(path.join(__dirname + '/historico.html'));
 });
 
 

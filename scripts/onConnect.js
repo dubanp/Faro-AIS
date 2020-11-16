@@ -30,16 +30,20 @@ function startShips() {
             map: map,
             icon: image
         });
-        marker.setPosition(locations[i]);
-        marker.addListener("mouseover", () => {
+        markers.push(marker);
+        markers[i].setPosition(locations[i]);
+        markers[i].addListener("mouseover", () => {
 
+            $.get('/getdata', parseFloat(i), function(message) {
+                data[i] = message;
+            });
             infoWindow.setContent(JSON.stringify(data[i]))
-            infoWindow.open(map, marker);
+            infoWindow.open(map, markers[i]);
         });
-        marker.addListener("mouseout", () => {
+        markers[i].addListener("mouseout", () => {
             infoWindow.close();
         });
-        markers.push(marker);
+
     }
 }
 
