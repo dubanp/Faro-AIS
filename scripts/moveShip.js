@@ -23,7 +23,7 @@ function startMap() {
     marker.setPosition(faro);
 }
 
-function moveShip(shipLat, shipLng, mmsi, isNew) {
+function moveShip(shipLat, shipLng, Tmmsi, isNew) {
     var image = "https://img.icons8.com/cotton/64/000000/cargo-ship--v2.png";
 
     var newPos = {
@@ -31,7 +31,7 @@ function moveShip(shipLat, shipLng, mmsi, isNew) {
         lng: shipLng
     }
 
-    console.log("is new: " + isNew + " which one: " + mmsi)
+    console.log("is new: " + isNew + " which one: " + Tmmsi)
     if (isNew == true) {
         var marker = new google.maps.Marker({
             map: map,
@@ -40,7 +40,7 @@ function moveShip(shipLat, shipLng, mmsi, isNew) {
         marker.setPosition(newPos);
 
         marker.addListener("mouseover", () => {
-            try { var newData = data[mmsi]; } catch (error) {}
+            try { var newData = data[Tmmsi]; } catch (error) {}
             var textMmsi = newData["mmsi"];
             var textNav = newData["navStatus"];
             var textSpeed = newData["speedOverGround"];
@@ -57,6 +57,6 @@ function moveShip(shipLat, shipLng, mmsi, isNew) {
         });
         markers.push(marker);
     } else {
-        markers[mmsi].setPosition(newPos);
+        markers[Tmmsi].setPosition(newPos);
     }
 }
