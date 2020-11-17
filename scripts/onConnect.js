@@ -1,7 +1,6 @@
 mmsi = [];
 isNew = true;
 locations = [];
-
 markers = [];
 
 
