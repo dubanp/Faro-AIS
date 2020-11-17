@@ -14,7 +14,7 @@ try {
     $.get('/startup', function(message) {
         data = [];
         locations = message['b'];
-        dataTemplate(mmsi.length)
+        dataTemplate(locations.length)
         mmsi = message['a'];
         console.log(message);
         startShips();
@@ -37,7 +37,7 @@ function dataTemplate(fin) {
         var newData = {};
         //mensaje tipo 1
         newData['navStatus'] = null;
-        newData['rateOfTurn '] = null;
+        newData['rateOfTurn'] = null;
         newData['speedOverGround'] = null;
         newData['accuracy'] = null;
         newData['lon'] = null;
@@ -71,5 +71,6 @@ function dataTemplate(fin) {
         newData['destination'] = null;
         newData['dte'] = null;
         data.push(newData);
+
     }
 }
