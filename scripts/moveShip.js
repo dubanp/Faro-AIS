@@ -41,6 +41,7 @@ function moveShip(shipLat, shipLng, Tmmsi, isNew) {
 
         marker.addListener("mouseover", () => {
             try { var newData = data[Tmmsi]; } catch (error) {}
+            console.log(Tmmsi);
             var textMmsi = newData["mmsi"];
             var textNav = newData["navStatus"];
             var textSpeed = newData["speedOverGround"];
