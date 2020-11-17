@@ -1,7 +1,7 @@
 mmsi = [];
 isNew = true;
 locations = [];
-data = [];
+
 markers = [];
 
 
@@ -13,6 +13,7 @@ markers = [];
 
 try {
     $.get('/startup', function(message) {
+        data = [];
         locations = message['b'];
         dataTemplate(mmsi.length)
         mmsi = message['a'];
