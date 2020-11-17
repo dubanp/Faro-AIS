@@ -61,7 +61,7 @@ socket.on('udp message', function(message) {
         shipLat = msg["lat"];
         shipLng = msg["lon"];
         var tempData = data[tempMmsi];
-        console.log(data[tempMmsi] + msi)
+        console.log(data[tempMmsi] + mmsi)
         var newPos = {
             lat: shipLat,
             lng: shipLng
