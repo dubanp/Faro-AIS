@@ -50,7 +50,4 @@ function moveShip(shipLat, shipLng, mmsi, isNew) {
     } else {
         markers[mmsi].setPosition(newPos);
     }
-
-
-
 }

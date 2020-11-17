@@ -24,26 +24,11 @@ try {
 }
 
 function startShips() {
-    var image = "https://img.icons8.com/cotton/64/000000/cargo-ship--v2.png";
-    for (i = 0; i < locations.length; i++) {
-        var marker = new google.maps.Marker({
-            map: map,
-            icon: image
-        });
-        markers.push(marker);
-        markers[i].setPosition(locations[i]);
-        markers[i].addListener("mouseover", () => {
-
-            $.get('/getdata', parseFloat(i), function(message) {
-                data[i] = message;
-            });
-            infoWindow.setContent(JSON.stringify(data[i]))
-            infoWindow.open(map, markers[i]);
-        });
-        markers[i].addListener("mouseout", () => {
-            infoWindow.close();
-        });
-
+    for (u = 0; u < mmsi.length; u++) {
+        var tempLocation = locations[u];
+        slat = tempLocation["lat"];
+        slng = tempLocation["lng"];
+        moveShip(slat, slng, u, true)
     }
 }
 

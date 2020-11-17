@@ -93,7 +93,7 @@ socket.on('message', (content, rinfo) => {
         if ((type == 1) || (type == 2) || (type == 3)) {
             shipLat = msg1["lat"];
             shipLng = msg1["lon"];
-            tempData = data[tempMmsi];
+            var tempData = data[tempMmsi];
             var newPos = {
                 lat: shipLat,
                 lng: shipLng
@@ -121,6 +121,7 @@ socket.on('message', (content, rinfo) => {
             isNew = true;
         }
         if (type == 5) {
+            var tempData = data[tempMmsi];
             tempData["aisVersion "] = msg1["aisVersion"];
             tempData["imo "] = msg1["imo"];
             tempData["callsign "] = msg1["callsign"];
