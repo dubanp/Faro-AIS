@@ -40,7 +40,12 @@ function moveShip(shipLat, shipLng, mmsi, isNew) {
         marker.setPosition(newPos);
 
         marker.addListener("mouseover", () => {
-            infoWindow.setContent(JSON.stringify(data[mmsi]))
+            try { var newData = data[mmsi]; } catch (error) {}
+            var tablaR = "<table><tr><td>MMSI:</td></tr><td>" + newData["mmsi"].toString();
+            tablaR += "<table><tr><td>EstadodeNavegacion:</td></tr><td>" + newData["navStatus"].toString();
+            tablaR += "<table><tr><td>speedOverGround:</td></tr><td>" + newData["speedOverGround"].toString();
+            tablaR += "<table><tr><td>courseOverGround:</td></tr><td>" + newData["courseOverGround"].toString();
+            infoWindow.setContent(tablaR)
             infoWindow.open(map, marker);
         });
         marker.addListener("mouseout", () => {
