@@ -66,45 +66,45 @@ socket.on('udp message', function(message) {
             lat: shipLat,
             lng: shipLng
         }
-        tempData["navStatus "] = msg["navStatus"];
-        tempData["rateOfTurn "] = msg["rateOfTurn"];
-        tempData["speedOverGround "] = msg["speedOverGround"];
-        tempData["accuracy "] = msg["accuracy"];
-        tempData["lon "] = msg["lon"];
-        tempData["lat "] = msg["lat"];
-        tempData["courseOverGround "] = msg["courseOverGround"];
-        tempData["heading "] = msg["heading"];
-        tempData["utcSecond "] = msg["utcSecond"];
-        tempData["specialManoeuvre "] = msg["specialManoeuvre"];
-        tempData["raim "] = msg["raim"];
-        tempData["radio "] = msg["radio"];
-        tempData["type "] = msg["type"];
-        tempData["channel "] = null;
-        tempData["repeat "] = null;
-        tempData["mmsi "] = msg["mmsi"];
+        tempData["navStatus"] = msg["navStatus"];
+        tempData["rateOfTurn"] = msg["rateOfTurn"];
+        tempData["speedOverGround"] = msg["speedOverGround"];
+        tempData["accuracy"] = msg["accuracy"];
+        tempData["lon"] = msg["lon"];
+        tempData["lat"] = msg["lat"];
+        tempData["courseOverGround"] = msg["courseOverGround"];
+        tempData["heading"] = msg["heading"];
+        tempData["utcSecond"] = msg["utcSecond"];
+        tempData["specialManoeuvre"] = msg["specialManoeuvre"];
+        tempData["raim"] = msg["raim"];
+        tempData["radio"] = msg["radio"];
+        tempData["type"] = msg["type"];
+        tempData["channel"] = null;
+        tempData["repeat"] = null;
+        tempData["mmsi"] = msg["mmsi"];
         moveShip(shipLat, shipLng, tempMmsi, isNew)
         isNew = true;
         data[tempMmsi] = tempData;
     }
     if (type == 5) {
         var tempData = data[tempMmsi];
-        tempData["aisVersion "] = msg["aisVersion"];
-        tempData["imo "] = msg["imo"];
-        tempData["callsign "] = msg["callsign"];
-        tempData["name "] = msg["name"];
-        tempData["typeAndCargo "] = msg["typeAndCargo"];
-        tempData["dimBow "] = msg["dimBow"];
-        tempData["dimStern "] = msg["dimStern"];
-        tempData["dimPort "] = msg["dimPort"];
-        tempData["dimStarboard "] = msg["dimStarboard"];
-        tempData["epfd "] = msg["epfd"];
-        tempData["etaMonth "] = msg["etaMonth"];
-        tempData["etaDay "] = msg["etaDay"];
-        tempData["etaHour "] = msg["etaHour"];
-        tempData["etaMinute "] = msg["etaMinute"];
-        tempData["draught "] = msg["draught"];
-        tempData["destination "] = msg["destination"];
-        tempData["dte "] = msg["dte"];
+        tempData["aisVersion"] = msg["aisVersion"];
+        tempData["imo"] = msg["imo"];
+        tempData["callsign"] = msg["callsign"];
+        tempData["name"] = msg["name"];
+        tempData["typeAndCargo"] = msg["typeAndCargo"];
+        tempData["dimBow"] = msg["dimBow"];
+        tempData["dimStern"] = msg["dimStern"];
+        tempData["dimPort"] = msg["dimPort"];
+        tempData["dimStarboard"] = msg["dimStarboard"];
+        tempData["epfd"] = msg["epfd"];
+        tempData["etaMonth"] = msg["etaMonth"];
+        tempData["etaDay"] = msg["etaDay"];
+        tempData["etaHour"] = msg["etaHour"];
+        tempData["etaMinute"] = msg["etaMinute"];
+        tempData["draught"] = msg["draught"];
+        tempData["destination"] = msg["destination"];
+        tempData["dte"] = msg["dte"];
         data[tempMmsi] = tempData;
         isNew = true;
     }
