@@ -41,10 +41,14 @@ function moveShip(shipLat, shipLng, mmsi, isNew) {
 
         marker.addListener("mouseover", () => {
             try { var newData = data[mmsi]; } catch (error) {}
-            var tablaR = "<table><tr><td>MMSI:</td></tr><td>" + newData["mmsi"].toString();
-            tablaR += "<table><tr><td>EstadodeNavegacion:</td></tr><td>" + newData["navStatus"].toString();
-            tablaR += "<table><tr><td>speedOverGround:</td></tr><td>" + newData["speedOverGround"].toString();
-            tablaR += "<table><tr><td>courseOverGround:</td></tr><td>" + newData["courseOverGround"].toString();
+            var textMmsi = newData["mmsi"];
+            var textNav = newData["navStatus"];
+            var textSpeed = newData["speedOverGround"];
+            var textCourse = newData["courseOverGround"];
+            var tablaR = "<table><tr><td>MMSI:</td></tr><td>" + textMmsi.toString();
+            tablaR += "<table><tr><td>EstadodeNavegacion:</td></tr><td>" + textNav.toString();
+            tablaR += "<table><tr><td>speedOverGround:</td></tr><td>" + textSpeed.toString();
+            tablaR += "<table><tr><td>courseOverGround:</td></tr><td>" + textCourse.toString();
             infoWindow.setContent(tablaR)
             infoWindow.open(map, marker);
         });
