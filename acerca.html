@@ -23,17 +23,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="#">Acerca</a>
+                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link" href="#">Acerca<span class="sr-only">(current)</span></a>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <div class="row data"></div>
-        <div class="col-lg-12">
-            <div id="map"></div>
-        </div>
+
+    <div class="row data"></div>
+    <div class="col-lg-11 info">
+        <h1>Acerca de AISapp: Faro AIS</h1>
+        <h2 id="lat">¿Qué es AISapp?</h2>
+        <p align="justify" id="coordinates1">AISapp es un proyecto desarrollado en el marco del curso de comunicaciones de la Universidad del Norte. En AISapp aplicamos los conocimientos adquiridos durante el curso para recibir, demodular, decodificar y presentar la información emitida por
+            los Sistemas de Identificación Automática <b>(AIS)</b> de los navíos en el Río Magdalena</p>
+        <h2>¿Cómo funciona?</h2>
+        <p align="justify" id="coordinates2">Las señales emitidas por los sistemas AIS es captada a través de un dispositivo de Radio Definido por Software <b>(SDR)</b>, sintonizadas haciendo uso del software SDRsharp y demoduladas haciendo uso del software AISmon. Luego son enviadas desde
+            el equipo receptor hacia la instacia que hospeda el servidor web usando el protocolo UDP y finalmente decodificadas usando la librería AIS-STREAM-DECODER. La información obtenida es organizada, procesada y presentada en esta página web, haciendo
+            uso de la API de Google Maps.</p>
+        <h2>¿Quiénes somos?</h2>
+        <p id="coordinates3">AISapp es un desarrollo de Dubán Restrepo (dubanp@uninorte.edu.co) , Brayan Díaz (), y José Taboada().</p>
     </div>
+
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -62,8 +71,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script>
         /*$(document).ready(function() {
-                                                                                                    $("#exampleModal").modal('show');
-                                                                                                });*/
+                                                                                                                                                                                                                    $("#exampleModal").modal('show');
+                                                                                                                                                                                                                });*/
     </script>
 
 </body>

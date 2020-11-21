@@ -2,7 +2,7 @@ mmsi = [];
 isNew = true;
 locations = [];
 markers = [];
-
+data = []
 
 // socket.on('startUpData', function(message) {
 //     data[i] = message;
@@ -12,10 +12,9 @@ markers = [];
 
 try {
     $.get('/startup', function(message) {
-        data = [];
         locations = message['b'];
-        dataTemplate(locations.length)
         mmsi = message['a'];
+        getData()
         console.log(message);
         startShips();
     });
@@ -29,6 +28,14 @@ function startShips() {
         slat = tempLocation["lat"];
         slng = tempLocation["lng"];
         moveShip(slat, slng, u, true)
+    }
+}
+
+function getData() {
+    for (i in mmsi) {
+        $.get('getdata', i, function(requestedData) {
+            data.push(requestedData)
+        });
     }
 }
 
