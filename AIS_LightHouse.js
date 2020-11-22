@@ -156,7 +156,7 @@ io.on('connection', socket => {
 app.get('/', (request, response) => {
     response.sendFile(path.join(__dirname + '/index.html'));
 });
-app.get('/#', (request, response) => {
+app.get('/acerca', (request, response) => {
     response.sendFile(path.join(__dirname + '/acerca.html'));
 });
 
