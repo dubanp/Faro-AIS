@@ -35,6 +35,7 @@ function getData() {
     for (i in mmsi) {
         $.get('getdata', { "id": i }, function(requestedData) {
             data.push(requestedData)
+            console.log(data[i])
         });
     }
 }
