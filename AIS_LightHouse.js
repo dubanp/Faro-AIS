@@ -165,7 +165,8 @@ app.get('/getdata', (request, response) => {
     var Ur = request.Url
     var index = Ur["query"]
     index = Ur["id"]
-    response.send(data[Ur])
+    console.log(index)
+    response.send(data[index])
 });
 
 app.get('/startup', (request, response) => {
