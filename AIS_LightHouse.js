@@ -98,22 +98,22 @@ socket.on('message', (content, rinfo) => {
                 lat: shipLat,
                 lng: shipLng
             }
-            tempData['navStatus '] = msg1['navStatus'];
-            tempData['rateOfTurn '] = msg1['rateOfTurn'];
-            tempData['speedOverGround '] = msg1['speedOverGround'];
-            tempData['accuracy '] = msg1['accuracy'];
-            tempData['lon '] = msg1['lon'];
-            tempData['lat '] = msg1['lat'];
-            tempData['courseOverGround '] = msg1['courseOverGround'];
-            tempData['heading '] = msg1['heading'];
-            tempData['utcSecond '] = msg1['utcSecond'];
-            tempData['specialManoeuvre '] = msg1['specialManoeuvre'];
-            tempData['raim '] = msg1['raim'];
-            tempData['radio '] = msg1['radio'];
-            tempData['type '] = msg1['type'];
-            tempData['channel '] = null;
-            tempData['repeat '] = null;
-            tempData['mmsi '] = msg1['mmsi'];
+            tempData['navStatus'] = msg1['navStatus'];
+            tempData['rateOfTurn'] = msg1['rateOfTurn'];
+            tempData['speedOverGround'] = msg1['speedOverGround'];
+            tempData['accuracy'] = msg1['accuracy'];
+            tempData['lon'] = msg1['lon'];
+            tempData['lat'] = msg1['lat'];
+            tempData['courseOverGround'] = msg1['courseOverGround'];
+            tempData['heading'] = msg1['heading'];
+            tempData['utcSecond'] = msg1['utcSecond'];
+            tempData['specialManoeuvre'] = msg1['specialManoeuvre'];
+            tempData['raim'] = msg1['raim'];
+            tempData['radio'] = msg1['radio'];
+            tempData['type'] = msg1['type'];
+            tempData['channel'] = null;
+            tempData['repeat'] = null;
+            tempData['mmsi'] = msg1['mmsi'];
             if (isNew == true) {
                 locations.push(newPos);
             } else { locations[tempMmsi] = newPos; }
@@ -122,23 +122,23 @@ socket.on('message', (content, rinfo) => {
         }
         if (type == 5) {
             var tempData = data[tempMmsi];
-            tempData['aisVersion '] = msg1['aisVersion'];
-            tempData['imo '] = msg1['imo'];
-            tempData['callsign '] = msg1['callsign'];
-            tempData['name '] = msg1['name'];
-            tempData['typeAndCargo '] = msg1['typeAndCargo'];
-            tempData['dimBow '] = msg1['dimBow'];
-            tempData['dimStern '] = msg1['dimStern'];
-            tempData['dimPort '] = msg1['dimPort'];
-            tempData['dimStarboard '] = msg1['dimStarboard'];
-            tempData['epfd '] = msg1['epfd'];
-            tempData['etaMonth '] = msg1['etaMonth'];
-            tempData['etaDay '] = msg1['etaDay'];
-            tempData['etaHour '] = msg1['etaHour'];
-            tempData['etaMinute '] = msg1['etaMinute'];
-            tempData['draught '] = msg1['draught'];
-            tempData['destination '] = msg1['destination'];
-            tempData['dte '] = msg1['dte'];
+            tempData['aisVersion'] = msg1['aisVersion'];
+            tempData['imo'] = msg1['imo'];
+            tempData['callsign'] = msg1['callsign'];
+            tempData['name'] = msg1['name'];
+            tempData['typeAndCargo'] = msg1['typeAndCargo'];
+            tempData['dimBow'] = msg1['dimBow'];
+            tempData['dimStern'] = msg1['dimStern'];
+            tempData['dimPort'] = msg1['dimPort'];
+            tempData['dimStarboard'] = msg1['dimStarboard'];
+            tempData['epfd'] = msg1['epfd'];
+            tempData['etaMonth'] = msg1['etaMonth'];
+            tempData['etaDay'] = msg1['etaDay'];
+            tempData['etaHour'] = msg1['etaHour'];
+            tempData['etaMinute'] = msg1['etaMinute'];
+            tempData['draught'] = msg1['draught'];
+            tempData['destination'] = msg1['destination'];
+            tempData['dte'] = msg1['dte'];
             data[tempMmsi] = tempData;
             isNew = true;
         }
