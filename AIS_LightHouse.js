@@ -161,7 +161,7 @@ app.get('/acerca', (request, response) => {
 });
 
 app.get('/getdata', (request, response) => {
-    console.log(request[0])
+    console.log(request)
     response.send(data[request.toString])
 });
 
