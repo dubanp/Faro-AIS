@@ -162,7 +162,7 @@ app.get('/acerca', (request, response) => {
 
 app.get('/getdata', (request, response) => {
     var index = request.query.id
-    console.log(data.index)
+    console.log(data[index])
     response.send(data[index])
 });
 
