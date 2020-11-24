@@ -41,7 +41,7 @@ socket.on('message', (content, rinfo) => {
         var type = msg1.type;
         var shipLat
         var shipLng
-        var newMmsi = msg1['mmsi'];
+        var newMmsi = msg1["mmsi"];
 
         for (i = 0; i < mmsi.length; i++) {
             if (newMmsi == mmsi[i]) {
@@ -91,8 +91,8 @@ socket.on('message', (content, rinfo) => {
             tempMmsi = mmsi.length - 1;
         }
         if ((type == 1) || (type == 2) || (type == 3)) {
-            shipLat = msg1['lat'];
-            shipLng = msg1['lon'];
+            shipLat = msg1["lat"];
+            shipLng = msg1["lon"];
             var tempData = data[tempMmsi];
             var newPos = {
                 lat: shipLat,
@@ -112,8 +112,8 @@ socket.on('message', (content, rinfo) => {
             tempData['radio '] = msg1['radio'];
             tempData['type '] = msg1['type'];
             tempData['channel '] = null;
-            tempData['repeat '] = null;
-            tempData['mmsi '] = msg1['mmsi'];
+            tempData["repeat "] = null;
+            tempData["mmsi "] = msg1["mmsi"];
             if (isNew == true) {
                 locations.push(newPos);
             } else { locations[tempMmsi] = newPos; }
@@ -122,23 +122,23 @@ socket.on('message', (content, rinfo) => {
         }
         if (type == 5) {
             var tempData = data[tempMmsi];
-            tempData['aisVersion '] = msg1['aisVersion'];
-            tempData['imo '] = msg1['imo'];
-            tempData['callsign '] = msg1['callsign'];
-            tempData['name '] = msg1['name'];
-            tempData['typeAndCargo '] = msg1['typeAndCargo'];
-            tempData['dimBow '] = msg1['dimBow'];
-            tempData['dimStern '] = msg1['dimStern'];
-            tempData['dimPort '] = msg1['dimPort'];
-            tempData['dimStarboard '] = msg1['dimStarboard'];
-            tempData['epfd '] = msg1['epfd'];
-            tempData['etaMonth '] = msg1['etaMonth'];
-            tempData['etaDay '] = msg1['etaDay'];
-            tempData['etaHour '] = msg1['etaHour'];
-            tempData['etaMinute '] = msg1['etaMinute'];
-            tempData['draught '] = msg1['draught'];
-            tempData['destination '] = msg1['destination'];
-            tempData['dte '] = msg1['dte'];
+            tempData["aisVersion "] = msg1["aisVersion"];
+            tempData["imo "] = msg1["imo"];
+            tempData["callsign "] = msg1["callsign"];
+            tempData["name "] = msg1["name"];
+            tempData["typeAndCargo "] = msg1["typeAndCargo"];
+            tempData["dimBow "] = msg1["dimBow"];
+            tempData["dimStern "] = msg1["dimStern"];
+            tempData["dimPort "] = msg1["dimPort"];
+            tempData["dimStarboard "] = msg1["dimStarboard"];
+            tempData["epfd "] = msg1["epfd"];
+            tempData["etaMonth "] = msg1["etaMonth"];
+            tempData["etaDay "] = msg1["etaDay"];
+            tempData["etaHour "] = msg1["etaHour"];
+            tempData["etaMinute "] = msg1["etaMinute"];
+            tempData["draught "] = msg1["draught"];
+            tempData["destination "] = msg1["destination"];
+            tempData["dte "] = msg1["dte"];
             data[tempMmsi] = tempData;
             isNew = true;
         }
@@ -181,5 +181,5 @@ app.get('/startup', (request, response) => {
 
 socket.bind(50001);
 server.listen(10000, () => {
-    console.log('Servidor abierto en puerto 10000');
+    console.log("Servidor abierto en puerto 10000");
 });
