@@ -163,8 +163,8 @@ app.get('/acerca', (request, response) => {
 app.get('/getdata', (request, response) => {
     console.log(request["Url"])
     var Ur = request.Url
-    var index = Ur["query"]
-    index = Ur["id"]
+    var index = request.query
+    index = query["id"]
     console.log(index)
     response.send(data[index])
 });
