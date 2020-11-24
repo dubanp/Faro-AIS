@@ -33,7 +33,7 @@ function startShips() {
 
 function getData() {
     for (i in mmsi) {
-        $.get('getdata', i, function(requestedData) {
+        $.get('getdata', i.toString(), function(requestedData) {
             data.push(requestedData)
         });
     }
