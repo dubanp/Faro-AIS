@@ -98,7 +98,7 @@ function moveShip(shipLat, shipLng, Tmmsi, isNew) {
                     break;
             }
             var tablaR = "<table><tr><td><b>MMSI:</b></td></tr><td>" + textMmsi.toString();
-            tablaR += "<table><tr><td><b>EstadodeNavegacion:</b></td></tr><td>" + text.Nav;
+            tablaR += "<table><tr><td><b>EstadodeNavegacion:</b></td></tr><td>" + textNav;
             tablaR += "<table><tr><td><b>speedOverGround:</b></td></tr><td>" + textSpeed.toString() + " nudos";
             tablaR += "<table><tr><td><b>courseOverGround:</b></td></tr><td>" + textCourse.toString();
             if (newData['name'] != null) {
