@@ -98,13 +98,15 @@ function moveShip(shipLat, shipLng, Tmmsi, isNew) {
                     break;
             }
             var tablaR = "<table><tr><td><b>MMSI:</b></td></tr><td>" + textMmsi.toString();
-            tablaR += "<table><tr><td><b>EstadodeNavegacion:</b></td></tr><td>" + textNav;
-            tablaR += "<table><tr><td><b>speedOverGround:</b></td></tr><td>" + textSpeed.toString() + " nudos";
-            tablaR += "<table><tr><td><b>courseOverGround:</b></td></tr><td>" + textCourse.toString();
+            tablaR += "<table><tr><td><b>Estado de Navegacion:</b></td></tr><td>" + textNav;
+            tablaR += "<table><tr><td><b>Velocidad:</b></td></tr><td>" + textSpeed.toString() + " nudos";
+            tablaR += "<table><tr><td><b>Curso:</b></td></tr><td>" + textCourse.toString();
             if (newData['name'] != null) {
                 tablaR = "<table><tr><td><b>Nombre:</b></td></tr><td>" + newData['name'].toString() + tablaR;
                 textDest = newData['destination']
-                tablaR += "<table><tr><td><b>Destino:</b></td></tr><td>" + textDest.toString();
+                if (textDest != null) {
+                    tablaR += "<table><tr><td><b>Destino:</b></td></tr><td>" + textDest.toString();
+                }
                 textCargo = boatTypeAndCargo(textCargo);
                 tablaR += "<table><tr><td><b>Tipo y carga:</b></td></tr><td>" + textCargo;
             }
@@ -161,7 +163,7 @@ function boatTypeAndCargo(textCargo) {
             break;
     }
 
-    textCargo.toString();
+    textCargo = textCargo.toString();
     textCargo = textCargo.split("");
     switch (parseInt(textCargo[0])) {
         case 2:
