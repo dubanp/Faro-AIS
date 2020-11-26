@@ -133,6 +133,10 @@ function boatTypeAndCargo(textCargo) {
             textCargo = "Barcos de búsqueda y rescate";
             return textCargo
             break;
+        case 52:
+            textCargo = "Barcos Remolcador";
+            return textCargo
+            break;
         case 53:
             textCargo = "Remolcadores";
             return textCargo
