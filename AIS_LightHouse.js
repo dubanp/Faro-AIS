@@ -149,7 +149,13 @@ socket.on('message', (content, rinfo) => {
 
 io.on('connection', socket => {
     socket.on('on connection', (content, rinfo) => {
+        var startUpData = {};
+        startUpData['a'] = mmsi;
+        startUpData['b'] = locations;
         socket.emit('startUpData', startUpData)
+    });
+    socket.on('getData', (content, rinfo) => {
+        socket.emit('getData', data[content])
     });
 });
 
@@ -162,7 +168,7 @@ app.get('/acerca', (request, response) => {
 
 app.get('/getdata', (request, response) => {
     var index = request.query.id
-    console.log(data[index])
+
     response.send(data[index])
 });
 
