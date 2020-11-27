@@ -165,10 +165,12 @@ app.get('/', (request, response) => {
 app.get('/acerca', (request, response) => {
     response.sendFile(path.join(__dirname + '/acerca.html'));
 });
+app.get('/favicon.ico', (request, response) => {
+    response.sendFile(path.join(__dirname + '/favicon.png'));
+});
 
 app.get('/getdata', (request, response) => {
     var index = request.query.id
-
     response.send(data[index])
 });
 
