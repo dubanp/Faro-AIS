@@ -186,6 +186,6 @@ app.get('/startup', (request, response) => {
 
 
 socket.bind(50001);
-server.listen(80, () => {
+server.listen(15002, () => {
     console.log('Servidor abierto en puerto 10000');
 });
