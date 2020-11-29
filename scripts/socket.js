@@ -1,1 +1,1 @@
-socket = io.connect('http://52.1.45.45:10000');
+socket = io.connect('http://52.1.45.45:15002');
